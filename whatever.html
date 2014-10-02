@@ -5,12 +5,13 @@
 </head>
 
 <body>
-  {{> hello}}
+	<div class="row columns">
+		{{> yield}}
+	</div>
 </body>
 
 <template name="hello">
-	
-<div class="row columns">
+
   	<h1>whatever u like ?</h1>
 	{{#each answers}}
 		<div class="small-12 medium-4 columns">
@@ -19,6 +20,17 @@
 			</button>
 		</div>
 	{{/each}}
-</div>	
   	
+</template>
+
+<template name="create">
+	<h1>u can create everything</h1>
+</template>
+
+<template name="vote">
+	<h1>vote on {{id}}</h1>
+</template>
+
+<template name="results">
+	<h1>what others think?</h1>
 </template>

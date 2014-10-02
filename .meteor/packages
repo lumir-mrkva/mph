@@ -7,4 +7,5 @@ meteor-platform
 autopublish
 insecure
 mrt:foundation-5
+iron:router
 
