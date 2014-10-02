@@ -1,23 +1,33 @@
+Answers = new Meteor.Collection('answers')
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
 
   Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
+    answers: function() {
+      return Answers.find();
+    },
+    isWinner: function(answer) {
+      var winner = Answers.findOne({},{sort: {count: -1}});
+      return answer.count === winner.count ? "alert" : "";
+    }
+  }); 
+
+  Template.hello.events({
+    'click button': function() {
+      Answers.update(this._id, {$inc: {count: 1}});
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
-    }
-  });
 }
 
 if (Meteor.isServer) {
+  var items = ["caj","kafe","zen"];
+
   Meteor.startup(function () {
-    // code to run on server at startup
+    if (Answers.find().count() === 0) {
+      items.forEach(function(item) {
+        Answers.insert({answer: item, count: 0});
+      });
+    }
   });
 }

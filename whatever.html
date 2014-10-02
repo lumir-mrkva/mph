@@ -3,12 +3,21 @@
 </head>
 
 <body>
-  <h1>whatever</h1>
+  <h1>whatever u like ?</h1>
 
   {{> hello}}
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+	
+<div class="row">
+	{{#each answers}}
+		<div class="small-12 medium-4 columns">
+			<button class="{{isWinner this}} small-12">
+				{{answer}} - {{count}} 
+			</button>
+		</div>
+	{{/each}}
+</div>	
+  	
 </template>
