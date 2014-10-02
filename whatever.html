@@ -1,16 +1,17 @@
 <head>
-  <title>whatever</title>
+	<meta name="viewport" 
+		content="width=device-width, initial-scale=1.0" />
+	<title>whatever</title>
 </head>
 
 <body>
-  <h1>whatever u like ?</h1>
-
   {{> hello}}
 </body>
 
 <template name="hello">
 	
-<div class="row">
+<div class="row columns">
+  	<h1>whatever u like ?</h1>
 	{{#each answers}}
 		<div class="small-12 medium-4 columns">
 			<button class="{{isWinner this}} small-12">
