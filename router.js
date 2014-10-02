@@ -1,9 +1,13 @@
+Router.configure({
+	layoutTemplate: 'default'
+});
+
 Router.route('hello', {
 	path: '/'
 });
 
 Router.route('create', {
-	path: '/polls'
+	path: '/polls',
 });
 
 Router.route('vote', {

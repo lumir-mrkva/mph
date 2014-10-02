@@ -4,22 +4,28 @@
 	<title>whatever</title>
 </head>
 
-<body>
+<template name="default">
 	<div class="row columns">
 		{{> yield}}
 	</div>
-</body>
+</template>
 
 <template name="hello">
 
-  	<h1>whatever u like ?</h1>
-	{{#each answers}}
+  	<h1>super important questions</h1>
+  	<div class="row">
+	{{#each polls}}
 		<div class="small-12 medium-4 columns">
-			<button class="{{isWinner this}} small-12">
-				{{answer}} - {{count}} 
+			<button class="small-12">
+				{{question}}
 			</button>
 		</div>
 	{{/each}}
+	</div>
+
+	<a href="{{pathFor 'create'}}" class="button success">
+		add another question!
+	</a>
   	
 </template>
 
