@@ -13,15 +13,15 @@
 <template name="hello">
 
   	<h1>super important questions</h1>
-  	<div class="row">
-	{{#each polls}}
-		<div class="small-12 medium-4 columns">
-			<button class="small-12">
+  	<ul>
+	{{#each questions}}
+		<li>
+			<a href="{{pathFor 'vote'}}">
 				{{question}}
-			</button>
-		</div>
+			</a>
+		</li>
 	{{/each}}
-	</div>
+	</ul>
 
 	<a href="{{pathFor 'create'}}" class="button success">
 		add another question!
@@ -30,13 +30,48 @@
 </template>
 
 <template name="create">
-	<h1>u can create everything</h1>
+	<h1>u can ask anything</h1>
+	<form>
+		<input id="question" type="text" required/>
+		<h3>answers</h3>
+		<ul>
+			{{#each answers}}
+				<li>{{answer}}</li>
+			{{/each}}
+		</ul>
+		<div id="addForm" class="row collapse postfix-round">
+			<div class="small-8 columns">
+				<input id="answer" type="text" placeholder="answer" />
+			</div>
+			<div class="small-4 columns">
+				<a href="#" id="add" class="button postfix">
+					add
+				</a>
+			</div>
+		</div>
+		<input type="submit" class="button success" value="create poll"/>
+	</form>
 </template>
 
 <template name="vote">
-	<h1>vote on {{id}}</h1>
+	<h1>{{question.question}}</h1>
+	{{#each answers}}
+		<div class="small-12 medium-4 columns">
+			<button class="small-12">
+				{{answer}} 
+			</button>
+		</div>
+	{{/each}}
 </template>
 
 <template name="results">
-	<h1>what others think?</h1>
+	<h1>{{question.question}}</h1>
+	<table class="results">
+	{{#each answers}}
+		<tr>
+			<td>{{answer}}</td>
+			<td>{{count}}</td>
+		</tr>
+	{{/each}}
+	</table>
 </template>

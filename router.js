@@ -3,7 +3,10 @@ Router.configure({
 });
 
 Router.route('hello', {
-	path: '/'
+	path: '/',
+	data: function() {
+		return {questions: Questions.find()};
+	}
 });
 
 Router.route('create', {
@@ -13,10 +16,21 @@ Router.route('create', {
 Router.route('vote', {
 	path: '/polls/:_id',
 	data: function() {
-		return {id: this.params._id};
+		var id = this.params._id;
+		return {question: Questions.findOne(id),
+			answers: Answers.find({questionId: id})};
 	}
 });
 
 Router.route('results', {
-	path: '/polls/:_id/results'
+	path: '/polls/:_id/results',
+	data: function() {
+		var id = this.params._id;
+		return {question: Questions.findOne(id),
+			answers: Answers.find({questionId: id},{sort: {count: -1}})};
+	}
 });
+
+function question() {
+
+}
