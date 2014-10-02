@@ -39,13 +39,6 @@ if (Meteor.isClient) {
         Router.go('results', {_id: this.questionId});
       }
   });
-
-  Template.results.events({
-      isWinner: function(answer) {
-        var winner = Answers.findOne({},{sort: {count: -1}});
-        return answer.count === winner.count ? "alert" : "";
-      }
-  });
 }
 
 if (Meteor.isServer) {
