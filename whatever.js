@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     answers: function() {
       return answers.find();
     }
-  })
+  });
 
   Template.create.events({
     'submit': function(e) {

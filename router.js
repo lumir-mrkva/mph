@@ -30,7 +30,3 @@ Router.route('results', {
 			answers: Answers.find({questionId: id},{sort: {count: -1}})};
 	}
 });
-
-function question() {
-
-}
